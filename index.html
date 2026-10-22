@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KigaliPay Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark')</script>
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+
+  <!-- Mobile overlay -->
+  <div id="overlay" class="fixed inset-0 z-30 hidden bg-black/50 lg:hidden"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-64 -translate-x-full flex-col bg-brand-800 p-4 transition-transform duration-300 lg:translate-x-0" aria-label="Main navigation">
+    <div class="mb-8 flex items-center justify-between px-2">
+      <a href="#" class="flex items-center gap-2 text-xl font-bold text-white"><span aria-hidden="true">💳</span> KigaliPay</a>
+      <button id="close-btn" class="rounded p-1 text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 lg:hidden" aria-label="Close menu">✕</button>
+    </div>
+    <nav>
+      <ul class="space-y-1">
+        <li><a href="#" class="nav-link bg-brand-700 text-white" aria-current="page"><span aria-hidden="true">🏠</span>Dashboard</a></li>
+        <li><a href="#" class="nav-link"><span aria-hidden="true">👥</span>Users</a></li>
+        <li><a href="#" class="nav-link"><span aria-hidden="true">🧾</span>Transactions</a></li>
+        <li><a href="#" class="nav-link"><span aria-hidden="true">📊</span>Reports</a></li>
+        <li><a href="#" class="nav-link"><span aria-hidden="true">💬</span>Messages</a></li>
+        <li><a href="#" class="nav-link"><span aria-hidden="true">⚙️</span>Settings</a></li>
+      </ul>
+    </nav>
+    <p class="mt-auto px-2 text-xs text-brand-200">© 2026 KigaliPay</p>
+  </aside>
+
+  <div class="lg:pl-64">
+    <!-- Top bar -->
+    <header class="sticky top-0 z-20 flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white/90 px-4 py-3 backdrop-blur dark:border-slate-700 dark:bg-slate-800/90 sm:px-6">
+      <button id="menu-btn" class="rounded-lg p-2 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-400 dark:hover:bg-slate-700 lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+      <h1 class="text-lg font-bold sm:text-xl">Dashboard</h1>
+
+      <div class="order-last w-full md:order-none md:ml-auto md:w-72">
+        <label for="search" class="sr-only">Search</label>
+        <input id="search" type="search" placeholder="Search transactions…" class="field-input" />
+      </div>
+
+      <button id="theme-btn" class="ml-auto rounded-lg p-2 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-400 dark:hover:bg-slate-700 md:ml-0" aria-label="Toggle dark mode">🌓</button>
+      <img src="https://ui-avatars.com/api/?name=Admin+User&background=1b8062&color=fff" alt="Admin User profile photo" class="h-9 w-9 rounded-full" width="36" height="36" />
+    </header>
+
+    <main class="space-y-6 p-4 sm:p-6">
+      <!-- Stat cards -->
+      <section class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4" aria-label="Key statistics">
+      <article class="card flex items-center justify-between">
+        <div>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Total Users</p>
+          <p class="mt-1 text-2xl font-bold">12,480</p>
+          <p class="mt-1 text-xs font-medium text-brand-700 dark:text-brand-300">+4.2% this month</p>
+        </div>
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-xl dark:bg-brand-900" aria-hidden="true">👥</span>
+      </article>
+      <article class="card flex items-center justify-between">
+        <div>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Revenue</p>
+          <p class="mt-1 text-2xl font-bold">RWF 8.4M</p>
+          <p class="mt-1 text-xs font-medium text-brand-700 dark:text-brand-300">+12.8% this month</p>
+        </div>
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-xl dark:bg-brand-900" aria-hidden="true">💰</span>
+      </article>
+      <article class="card flex items-center justify-between">
+        <div>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Orders</p>
+          <p class="mt-1 text-2xl font-bold">3,921</p>
+          <p class="mt-1 text-xs font-medium text-brand-700 dark:text-brand-300">-1.3% this week</p>
+        </div>
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-xl dark:bg-brand-900" aria-hidden="true">🧾</span>
+      </article>
+      <article class="card flex items-center justify-between">
+        <div>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Growth</p>
+          <p class="mt-1 text-2xl font-bold">18.6%</p>
+          <p class="mt-1 text-xs font-medium text-brand-700 dark:text-brand-300">+2.1% this quarter</p>
+        </div>
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-xl dark:bg-brand-900" aria-hidden="true">📈</span>
+      </article>
+      </section>
+
+      <!-- Data table -->
+      <section class="card p-0" aria-labelledby="tx-title">
+        <div class="flex items-center justify-between p-5">
+          <h2 id="tx-title" class="text-lg font-bold">Recent transactions</h2>
+          <a href="#" class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300">View all</a>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[640px] text-left text-sm">
+            <thead class="bg-slate-100 text-xs uppercase text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+              <tr>
+                <th scope="col" class="px-5 py-3">ID</th>
+                <th scope="col" class="px-5 py-3">Customer</th>
+                <th scope="col" class="px-5 py-3">Service</th>
+                <th scope="col" class="px-5 py-3">Amount</th>
+                <th scope="col" class="px-5 py-3">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+            <tr class="transition hover:bg-slate-50 dark:hover:bg-slate-700/50">
+              <td class="px-5 py-3 font-medium">#KP-1041</td>
+              <td class="px-5 py-3">Amina Uwase</td>
+              <td class="px-5 py-3">Airtime top-up</td>
+              <td class="px-5 py-3">RWF 5,000</td>
+              <td class="px-5 py-3"><span class="badge badge-paid">Paid</span></td>
+            </tr>
+            <tr class="transition hover:bg-slate-50 dark:hover:bg-slate-700/50">
+              <td class="px-5 py-3 font-medium">#KP-1042</td>
+              <td class="px-5 py-3">Jean Bosco</td>
+              <td class="px-5 py-3">Electricity bill</td>
+              <td class="px-5 py-3">RWF 18,500</td>
+              <td class="px-5 py-3"><span class="badge badge-pending">Pending</span></td>
+            </tr>
+            <tr class="transition hover:bg-slate-50 dark:hover:bg-slate-700/50">
+              <td class="px-5 py-3 font-medium">#KP-1043</td>
+              <td class="px-5 py-3">Grace Mukamana</td>
+              <td class="px-5 py-3">Send money</td>
+              <td class="px-5 py-3">RWF 42,000</td>
+              <td class="px-5 py-3"><span class="badge badge-paid">Paid</span></td>
+            </tr>
+            <tr class="transition hover:bg-slate-50 dark:hover:bg-slate-700/50">
+              <td class="px-5 py-3 font-medium">#KP-1044</td>
+              <td class="px-5 py-3">Eric Niyonzima</td>
+              <td class="px-5 py-3">School fees</td>
+              <td class="px-5 py-3">RWF 120,000</td>
+              <td class="px-5 py-3"><span class="badge badge-failed">Failed</span></td>
+            </tr>
+            <tr class="transition hover:bg-slate-50 dark:hover:bg-slate-700/50">
+              <td class="px-5 py-3 font-medium">#KP-1045</td>
+              <td class="px-5 py-3">Diane Ingabire</td>
+              <td class="px-5 py-3">Water bill</td>
+              <td class="px-5 py-3">RWF 7,200</td>
+              <td class="px-5 py-3"><span class="badge badge-paid">Paid</span></td>
+            </tr>
+            <tr class="transition hover:bg-slate-50 dark:hover:bg-slate-700/50">
+              <td class="px-5 py-3 font-medium">#KP-1046</td>
+              <td class="px-5 py-3">Patrick Habimana</td>
+              <td class="px-5 py-3">Merchant payment</td>
+              <td class="px-5 py-3">RWF 23,900</td>
+              <td class="px-5 py-3"><span class="badge badge-pending">Pending</span></td>
+            </tr>
+            <tr class="transition hover:bg-slate-50 dark:hover:bg-slate-700/50">
+              <td class="px-5 py-3 font-medium">#KP-1047</td>
+              <td class="px-5 py-3">Aline Umutoni</td>
+              <td class="px-5 py-3">Send money</td>
+              <td class="px-5 py-3">RWF 15,000</td>
+              <td class="px-5 py-3"><span class="badge badge-paid">Paid</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panels grid -->
+      <div class="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        <section class="card" aria-labelledby="act-title">
+          <h2 id="act-title" class="mb-4 text-lg font-bold">Recent activity</h2>
+          <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true"></span>
+            <div><p class="text-sm font-medium">Amina Uwase sent RWF 5,000</p><p class="text-xs text-slate-600 dark:text-slate-400">2 min ago</p></div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true"></span>
+            <div><p class="text-sm font-medium">New user registered: Eric N.</p><p class="text-xs text-slate-600 dark:text-slate-400">15 min ago</p></div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true"></span>
+            <div><p class="text-sm font-medium">Payment failed for #KP-1044</p><p class="text-xs text-slate-600 dark:text-slate-400">1 hr ago</p></div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true"></span>
+            <div><p class="text-sm font-medium">Monthly report generated</p><p class="text-xs text-slate-600 dark:text-slate-400">3 hrs ago</p></div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true"></span>
+            <div><p class="text-sm font-medium">Grace M. upgraded to Business</p><p class="text-xs text-slate-600 dark:text-slate-400">Yesterday</p></div>
+          </li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="top-title">
+          <h2 id="top-title" class="mb-4 text-lg font-bold">Top services</h2>
+          <ul class="space-y-4">
+          <li>
+            <div class="mb-1 flex justify-between text-sm"><span>Airtime top-up</span><span class="font-semibold">85%</span></div>
+            <div class="h-2 rounded-full bg-slate-200 dark:bg-slate-700" role="progressbar" aria-label="Airtime top-up" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+              <div class="h-2 rounded-full bg-brand-500" style="width:85%"></div>
+            </div>
+          </li>
+          <li>
+            <div class="mb-1 flex justify-between text-sm"><span>Bill payments</span><span class="font-semibold">64%</span></div>
+            <div class="h-2 rounded-full bg-slate-200 dark:bg-slate-700" role="progressbar" aria-label="Bill payments" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100">
+              <div class="h-2 rounded-full bg-brand-500" style="width:64%"></div>
+            </div>
+          </li>
+          <li>
+            <div class="mb-1 flex justify-between text-sm"><span>Send money</span><span class="font-semibold">52%</span></div>
+            <div class="h-2 rounded-full bg-slate-200 dark:bg-slate-700" role="progressbar" aria-label="Send money" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100">
+              <div class="h-2 rounded-full bg-brand-500" style="width:52%"></div>
+            </div>
+          </li>
+          <li>
+            <div class="mb-1 flex justify-between text-sm"><span>School fees</span><span class="font-semibold">38%</span></div>
+            <div class="h-2 rounded-full bg-slate-200 dark:bg-slate-700" role="progressbar" aria-label="School fees" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100">
+              <div class="h-2 rounded-full bg-brand-500" style="width:38%"></div>
+            </div>
+          </li>
+          </ul>
+        </section>
+
+        <section class="card lg:col-span-2 xl:col-span-1" aria-labelledby="form-title">
+          <h2 id="form-title" class="mb-4 text-lg font-bold">Add new user</h2>
+          <form id="user-form" class="space-y-4">
+            <div>
+              <label for="name" class="field-label">Full name</label>
+              <input id="name" type="text" required placeholder="e.g. Amina Uwase" class="field-input" />
+            </div>
+            <div>
+              <label for="email" class="field-label">Email</label>
+              <input id="email" type="email" required placeholder="name@example.com" class="field-input" />
+            </div>
+            <div>
+              <label for="role" class="field-label">Role</label>
+              <select id="role" class="field-input">
+                <option>Customer</option>
+                <option>Agent</option>
+                <option>Admin</option>
+              </select>
+            </div>
+            <div class="flex gap-3">
+              <button type="submit" class="btn-primary">Add user</button>
+              <button type="reset" class="btn-secondary">Cancel</button>
+            </div>
+            <p id="form-msg" class="text-sm font-medium text-brand-700 dark:text-brand-300" role="status"></p>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
